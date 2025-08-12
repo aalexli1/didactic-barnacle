@@ -1,0 +1,13 @@
+app:
+  name: Project Scaffold
+  env: ${NODE_ENV:-development}
+  port: ${PORT:-3000}
+
+logging:
+  level: ${LOG_LEVEL:-info}
+
+environments:
+  development:
+    debug: true
+  production:
+    debug: false
