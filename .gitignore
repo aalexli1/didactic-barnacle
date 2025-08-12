@@ -1,0 +1,9 @@
+# Prevent re-adding removed demo artifacts
+# These were flagged in code review and must not be committed again.
+repo-access-demo/
+repo-access-demo/origin.git/
+repo-access-demo/work-repo
+
+# Common local test temp dirs (defensive; not currently used)
+tests/tmp/
+tmp/
