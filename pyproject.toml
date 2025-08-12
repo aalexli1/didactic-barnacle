@@ -11,6 +11,14 @@ requires-python = ">=3.10"
 authors = [{ name = "Repo Maintainers" }]
 dependencies = []
 
+[project.optional-dependencies]
+# Developer tooling installed via: pip install .[dev]
+dev = [
+  "black",
+  "isort",
+  "pytest",
+]
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["src"]
