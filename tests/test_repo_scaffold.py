@@ -17,6 +17,11 @@ def test_scaffold_directories_exist():
 
 def test_basic_files_exist():
     root = Path(__file__).resolve().parents[1]
-    for f in [root / ".gitignore", root / ".editorconfig", root / "pyproject.toml", root / "README.md"]:
+    for f in [
+        root / ".gitignore",
+        root / ".editorconfig",
+        root / "pyproject.toml",
+        root / "README.md",
+        root / "specs.md",
+    ]:
         assert f.exists(), f"Missing file: {f}"
-

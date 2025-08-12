@@ -18,7 +18,9 @@ addopts = "-q"
 
 [tool.black]
 line-length = 100
-target-version = ["py310", "py311", "py312", "py313"]
+# Avoid unreleased/bleeding versions here to keep tooling stable.
+# If testing future compatibility, re-add newer targets explicitly.
+target-version = ["py310", "py311", "py312"]
 exclude = [
   "^/ios/",
 ]
@@ -26,4 +28,3 @@ exclude = [
 [tool.isort]
 profile = "black"
 line_length = 100
-
