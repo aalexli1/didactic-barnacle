@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "didactic-barnacle"
+version = "0.0.0"
+description = "Monorepo scaffold for mobile companion app and tools"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "Repo Maintainers" }]
+dependencies = []
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-q"
+
+[tool.black]
+line-length = 100
+target-version = ["py310", "py311", "py312", "py313"]
+exclude = [
+  "^/ios/",
+]
+
+[tool.isort]
+profile = "black"
+line_length = 100
+
