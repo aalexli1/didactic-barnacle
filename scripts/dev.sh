@@ -1,13 +1,40 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Load .env if present
-if [ -f .env ]; then
-  set -a
-  # shellcheck disable=SC1091
-  . ./.env
-  set +a
+# Ensure we are running with bash even if invoked via `sh`.
+if [ -z "${BASH_VERSION:-}" ]; then
+  exec bash "$0" "$@"
 fi
+
+# Safely load .env without executing it (no sourcing).
+# Supports simple KEY=VALUE pairs with optional single/double quotes.
+load_env_file() {
+  local env_file=${1:-.env}
+  [ -f "$env_file" ] || return 0
+  while IFS= read -r line || [ -n "$line" ]; do
+    # Trim leading/trailing whitespace
+    line=$(printf '%s' "$line" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
+    # Skip comments and blank lines
+    [[ -z "$line" || ${line:0:1} == "#" ]] && continue
+    # Only accept KEY=VALUE pattern with safe var name
+    if [[ "$line" =~ ^([A-Za-z_][A-Za-z0-9_]*)=(.*)$ ]]; then
+      local key=${BASH_REMATCH[1]}
+      local val=${BASH_REMATCH[2]}
+      # Remove surrounding quotes if present
+      if [[ "$val" =~ ^\".*\"$ ]]; then
+        val=${val:1:${#val}-2}
+      elif [[ "$val" =~ ^\'.*\'$ ]]; then
+        val=${val:1:${#val}-2}
+      fi
+      # Export without eval; values are taken literally
+      printf -v "$key" '%s' "$val"
+      export "$key"
+    fi
+  done < "$env_file"
+}
+
+# Load .env if present (safely)
+load_env_file .env
 
 run_node() {
   if command -v node >/dev/null 2>&1 && [ -f src/index.js ]; then

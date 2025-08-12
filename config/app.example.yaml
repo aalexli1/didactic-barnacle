@@ -1,3 +1,9 @@
+# NOTE:
+# This file contains placeholders like ${VAR:-default}.
+# Standard YAML parsers do not expand these by themselves.
+# Either preprocess this file (e.g. via a build step) or resolve
+# environment variables within the application at startup.
+
 app:
   name: Project Scaffold
   env: ${NODE_ENV:-development}

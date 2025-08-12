@@ -42,9 +42,16 @@ A clean, language-agnostic project skeleton with sensible defaults for configura
 - `scripts/` holds portable bash scripts for common tasks.
 - `make` targets wrap scripts for a simple, consistent UX.
 
+## Config and Env
+
+- App config: `config/app.example.yaml` includes placeholders like `${VAR:-default}`. Standard YAML loaders don't expand these. Either:
+  - Preprocess into `config/app.yaml` using a template step in your build/deploy pipeline; or
+  - Resolve environment variables in your application code at startup and ignore `${...}` in YAML.
+- `.env` loading: `scripts/dev.sh` loads `.env` safely by parsing literal `KEY=VALUE` pairs (with optional quotes). It does not execute shell code or support complex shell expansions.
+- Shell compatibility: Scripts are written for `bash`. If invoked via `sh`, they will re-exec under `bash` automatically.
+
 ## Next Steps
 
 - Replace `src/index.js` with your actual app (Node, Python, etc.).
 - Pick and configure a test runner (e.g., Vitest/Jest, Pytest, etc.).
 - Add CI later if needed.
-
