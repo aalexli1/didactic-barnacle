@@ -11,6 +11,7 @@ Quick start
 - Explicit remote: `python3 scripts/validate_repo_access.py --remote https://example.com/owner/repo.git`
 - With HTTPS token: `python3 scripts/validate_repo_access.py --remote https://example.com/owner/repo.git --token $GITHUB_TOKEN`
 - Cleanup remote branch after: add `--cleanup`
+- Make cleanup failures fatal: add `--cleanup --strict`
 
 Notes
 

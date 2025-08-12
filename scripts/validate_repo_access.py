@@ -8,6 +8,7 @@ Usage examples:
   scripts/validate_repo_access.py --remote https://...  # explicit remote
   scripts/validate_repo_access.py --token $GITHUB_TOKEN # HTTPS token auth
   scripts/validate_repo_access.py --cleanup             # delete test branch after
+  scripts/validate_repo_access.py --cleanup --strict    # fail if cleanup fails
 
 Supported auth:
 - HTTPS: provide --token (and optional --username, defaults to x-access-token)
@@ -58,9 +59,9 @@ def mask_token_in_url(url: str) -> str:
         parts = urlsplit(url)
         if parts.username or parts.password:
             return urlunsplit((parts.scheme, parts.hostname or "", parts.path, parts.query, parts.fragment))
+        return url
     except Exception:
-        pass
-    return url
+        return "<invalid-url>"
 
 
 def inject_basic_auth(url: str, username: str, token: str) -> str:
@@ -98,6 +99,11 @@ def main(argv: Optional[List[str]] = None) -> int:
     parser.add_argument("--branch", help="Branch name to create (default: generated unique name).")
     parser.add_argument("--prefix", default="access-check", help="Prefix for generated branch name.")
     parser.add_argument("--cleanup", action="store_true", help="Delete the remote test branch after validation.")
+    parser.add_argument(
+        "--strict",
+        action="store_true",
+        help="Treat cleanup errors as fatal (non-zero exit).",
+    )
     args = parser.parse_args(argv)
 
     remote = args.remote or os.environ.get("REMOTE_URL") or resolve_origin_url_from_cwd()
@@ -136,7 +142,17 @@ def main(argv: Optional[List[str]] = None) -> int:
             f.write(f"access-ok @ {datetime.now(timezone.utc).isoformat()}\n")
 
         run(["git", "add", ".access-check"], cwd=clone_dir)
-        run(["git", "commit", "-m", f"chore: access validation {branch}"] , cwd=clone_dir)
+        # Ensure commit works in fresh environments without global author config
+        run([
+            "git",
+            "-c",
+            "user.name=repo-access-bot",
+            "-c",
+            "user.email=repo-access-bot@local",
+            "commit",
+            "-m",
+            f"chore: access validation {branch}",
+        ], cwd=clone_dir)
 
         print("Pushing test branch...")
         run(["git", "push", "-u", "origin", branch], cwd=clone_dir)
@@ -148,7 +164,12 @@ def main(argv: Optional[List[str]] = None) -> int:
                 run(["git", "push", "origin", "--delete", branch], cwd=clone_dir)
                 print("Remote branch deleted.")
             except Exception as e:
-                print(f"Warning: failed to delete remote branch: {e}")
+                msg = f"Failed to delete remote branch: {e}"
+                if args.strict:
+                    print(msg, file=sys.stderr)
+                    return 1
+                else:
+                    print(f"Warning: {msg}")
 
     print("Validation complete.")
     return 0
@@ -156,4 +177,3 @@ def main(argv: Optional[List[str]] = None) -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-
