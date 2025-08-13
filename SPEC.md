@@ -1,26 +1,25 @@
-I've created a comprehensive project specification document for the Mobile Companion App. The SPEC.md includes:
+I've created a comprehensive project specification document for the Mobile Companion App for Agentic Orchestrator. The specification includes:
 
-## Key Sections Covered:
+## Key Sections:
 
-**Project Overview** - Clear description of the mobile app for orchestrator monitoring
+**Project Overview**: Defines the mobile app as a monitoring and interaction interface for the existing orchestrator system using iOS SwiftUI.
 
-**Goals & Success Metrics** - Specific performance targets (2-second load times, WebSocket fallback)
+**Goals & Objectives**: Primary goals focus on task visibility, live monitoring, remote control, and configuration flexibility.
 
-**User Stories** - Four main user stories covering monitoring, debugging, remote task creation, and configuration
+**User Stories**: 4 core user stories covering task listing, detail viewing, task creation, and server configuration.
 
-**Functional Requirements** - Detailed F1-F5 sections covering:
-- Task list screen with pull-to-refresh
-- Task detail with live logs and WebSocket streaming  
-- Task creation flow with validation
-- Settings management with URL persistence
-- Comprehensive error handling
+**Requirements**: 
+- **11 Functional Requirements** (FR-001 to FR-011) covering task list, task detail, task creation, and settings
+- **11 Non-Functional Requirements** (NFR-001 to NFR-011) covering performance, reliability, usability, and technical constraints
 
-**Technical Architecture** - SwiftUI framework, URLSession networking, data models, and backend integration details
+**Technical Architecture**: SwiftUI client with URLSession networking, integrating with existing FastAPI endpoints.
 
-**Success Criteria** - Four milestone-based acceptance criteria from core functionality through optional advanced features
+**Success Criteria**: Defined across 4 milestones (M1-M4) with clear deliverables and optional enhancements.
 
-**Development Phases** - 8-week timeline broken into foundation, core features, real-time capabilities, and polish
+**Constraints & Scope**: Clear boundaries on what's included/excluded from MVP, including no push notifications, complex auth, or Android support.
 
-**Quality Assurance** - Testing strategy, code quality standards, and deployment approach
+**Implementation Phases**: 4-phase approach over 4-6 weeks with incremental delivery.
 
-The specification transforms the inception discussion into actionable, testable requirements while maintaining the incremental, demo-friendly approach requested. Each requirement is specific, implementable, and includes clear success criteria.
+**Acceptance Criteria**: Testable criteria for core functionality, quality standards, and technical standards.
+
+The specification captures all requirements from the inception discussion, including the 2-second performance targets, WebSocket with polling fallback, CORS requirements, and the 4-milestone delivery approach. It provides a clear, implementable roadmap for the mobile app development.
