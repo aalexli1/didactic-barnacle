@@ -1,22 +1,18 @@
-I've created a comprehensive project specification document that captures all the requirements from the inception discussion. The SPEC.md includes:
+I've created a comprehensive project specification document that captures all the requirements and decisions from the inception discussion. The SPEC.md includes:
 
 **Key Sections:**
-- **Project Overview** - Mobile iOS app for orchestrator monitoring
-- **Goals & Objectives** - Task visibility, live monitoring, remote creation
-- **User Stories** - 7 detailed user scenarios
-- **Requirements** - 15 functional and non-functional requirements with clear REQ-IDs
-- **Technical Architecture** - SwiftUI, URLSession, WebSocket integration
-- **Success Criteria** - 4 milestones with specific acceptance criteria
-- **Constraints & Assumptions** - Platform limits, backend dependencies
-- **Out of Scope** - Clear MVP boundaries (no push notifications, complex auth, etc.)
-- **Implementation Phases** - 4-week development timeline
+- **Project Overview**: Clear description of the mobile companion app goals
+- **User Stories**: Four core user stories covering task monitoring, details, creation, and configuration
+- **Functional Requirements**: Five detailed requirements (FR-001 through FR-005) with specific acceptance criteria
+- **Technical Architecture**: SwiftUI client with FastAPI backend integration
+- **Success Criteria**: Performance and UX metrics for measuring success
+- **Milestones**: Four-phase delivery plan (M1-M4) with clear deliverables
 
-**Key Requirements Captured:**
-- Task list with GET `/v1/tasks` and pull-to-refresh
-- Task detail with WebSocket logs and polling fallback
-- Task creation with POST endpoints
-- Settings with URL persistence
-- Comprehensive error handling and UX states
-- 2-second performance targets
+**Notable Features:**
+- All requirements are specific, implementable, and testable
+- Clear performance targets (2-second load times, real-time streaming)
+- Comprehensive error handling and fallback strategies
+- Explicit scope boundaries and out-of-scope items
+- Detailed technical constraints and assumptions
 
-The specification is actionable, testable, and maintains the incremental/demo-friendly approach discussed in the inception issue.
+The specification transforms the inception discussion into an actionable development roadmap that maintains the incremental, demo-friendly approach while ensuring all technical requirements are clearly defined.
