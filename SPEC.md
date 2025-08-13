@@ -1,24 +1,14 @@
-I've created a comprehensive project specification document based on the inception issue and discussion. The SPEC.md includes:
+I've created a comprehensive project specification document that captures all the requirements and decisions from the inception discussion. The SPEC.md includes:
 
 **Key Sections:**
-- **Project Overview** - Clear summary of the mobile companion app goals
-- **Goals and Objectives** - Primary goals with success metrics  
-- **User Stories** - Four core user stories from the inception issue
-- **Requirements** - 20 functional requirements (FR-001 to FR-020) and 9 non-functional requirements (NFR-001 to NFR-009)
-- **Technical Architecture** - SwiftUI stack, API endpoints, WebSocket behavior
-- **Success Criteria** - 4 milestone-based criteria with checkboxes
-- **Constraints and Assumptions** - Technical and project constraints
-- **Out of Scope** - Explicit MVP exclusions (push notifications, complex auth, etc.)
-- **Implementation Phases** - 4-phase delivery plan matching the milestones
-- **Quality Assurance** - Testing strategy and code quality requirements
-- **Risk Mitigation** - Technical and project risk handling
+- **Project Overview** - Clear description of the mobile companion app purpose
+- **Goals and Objectives** - Primary goals with measurable success metrics
+- **User Stories** - Four core user stories for task monitoring and creation
+- **Detailed Requirements** - Functional (FR-1 through FR-5) and non-functional requirements
+- **Technical Architecture** - iOS SwiftUI implementation with FastAPI backend integration
+- **Success Criteria** - Specific acceptance criteria including performance targets
+- **Constraints and Assumptions** - Technical and business limitations
+- **Out of Scope** - Explicitly excluded MVP features like push notifications
+- **Milestones** - Four-phase implementation plan (M1-M4)
 
-**Key Features Captured:**
-- Task list with status badges and pull-to-refresh
-- Task detail with live WebSocket logs and polling fallback  
-- Task creation form with title/description/repo_url
-- Settings screen for base URL configuration
-- Comprehensive error handling and UX states
-- Performance requirements (2-second load times)
-
-The specification is implementable, testable, and provides clear acceptance criteria for each milestone while maintaining focus on the MVP scope.
+The specification is structured to be actionable and testable, with clear performance targets (2-second load times), specific API endpoints, and comprehensive error handling requirements. Each requirement is numbered for easy reference during implementation.
