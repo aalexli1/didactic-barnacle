@@ -1,14 +1,19 @@
-I've created a comprehensive project specification document that captures all the requirements and decisions from the inception discussion. The SPEC.md includes:
+I've created a comprehensive project specification document that captures all the requirements from the inception discussion. The SPEC.md includes:
 
 **Key Sections:**
-- **Project Overview** - Clear description of the mobile companion app purpose
-- **Goals and Objectives** - Primary goals with measurable success metrics
-- **User Stories** - Four core user stories for task monitoring and creation
-- **Detailed Requirements** - Functional (FR-1 through FR-5) and non-functional requirements
-- **Technical Architecture** - iOS SwiftUI implementation with FastAPI backend integration
-- **Success Criteria** - Specific acceptance criteria including performance targets
-- **Constraints and Assumptions** - Technical and business limitations
-- **Out of Scope** - Explicitly excluded MVP features like push notifications
-- **Milestones** - Four-phase implementation plan (M1-M4)
+- **Project Overview** - Clear description of the mobile companion app
+- **Goals & Objectives** - Primary and secondary goals with focus on task visibility and remote interaction
+- **User Stories** - 4 main user stories covering task monitoring, log viewing, task creation, and configuration
+- **Detailed Requirements** - 23 specific functional requirements organized by feature area
+- **Technical Architecture** - SwiftUI client with FastAPI backend integration
+- **Success Criteria** - Measurable acceptance criteria and definition of done
+- **Implementation Milestones** - 4 phased approach from core functionality to optional enhancements
 
-The specification is structured to be actionable and testable, with clear performance targets (2-second load times), specific API endpoints, and comprehensive error handling requirements. Each requirement is numbered for easy reference during implementation.
+**Structured Requirements:**
+- **FR-01**: Task List Management (5 requirements)
+- **FR-02**: Task Detail View (6 requirements) 
+- **FR-03**: Task Creation (5 requirements)
+- **FR-04**: Configuration Management (4 requirements)
+- **FR-05**: Error Handling (4 requirements)
+
+Each requirement is clear, specific, implementable, and testable as requested. The specification addresses the discussion thread issues and provides a complete roadmap for building the mobile companion app.
