@@ -1,0 +1,68 @@
+config:
+  target: 'http://localhost:3000'
+  phases:
+    - duration: 60
+      arrivalRate: 5
+      name: "Warm up"
+    - duration: 120
+      arrivalRate: 10
+      name: "Ramp up load"
+    - duration: 300
+      arrivalRate: 20
+      name: "Sustained load"
+  variables:
+    adminToken: "{{ $processEnvironment.ADMIN_TOKEN }}"
+  processor: "./load-test-functions.js"
+
+scenarios:
+  - name: "User CRUD Operations"
+    weight: 70
+    flow:
+      - post:
+          url: "/api/users"
+          headers:
+            Authorization: "Bearer {{ adminToken }}"
+            Content-Type: "application/json"
+          json:
+            email: "load-test-{{ $randomNumber() }}@example.com"
+            username: "user{{ $randomNumber() }}"
+            firstName: "LoadTest"
+            lastName: "User"
+          capture:
+            - json: "$.id"
+              as: "userId"
+      - get:
+          url: "/api/users/{{ userId }}"
+          headers:
+            Authorization: "Bearer {{ adminToken }}"
+      - put:
+          url: "/api/users/{{ userId }}"
+          headers:
+            Authorization: "Bearer {{ adminToken }}"
+            Content-Type: "application/json"
+          json:
+            firstName: "Updated"
+            lastName: "Name"
+      - delete:
+          url: "/api/users/{{ userId }}"
+          headers:
+            Authorization: "Bearer {{ adminToken }}"
+
+  - name: "List Users"
+    weight: 20
+    flow:
+      - get:
+          url: "/api/users"
+          headers:
+            Authorization: "Bearer {{ adminToken }}"
+          qs:
+            page: "{{ $randomInt(1, 5) }}"
+            limit: "{{ $randomInt(5, 20) }}"
+
+  - name: "Unauthorized Access"
+    weight: 10
+    flow:
+      - get:
+          url: "/api/users"
+          expect:
+            - statusCode: 401
