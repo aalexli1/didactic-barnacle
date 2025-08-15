@@ -1,0 +1,208 @@
+2025-08-14 17:00:32,818 - INFO - Initializing Simple Auto-Agent...
+2025-08-14 17:00:32,827 - INFO - Repository: aalexli1/didactic-barnacle
+2025-08-14 17:00:32,827 - INFO - Working directory: /Users/alexli/didactic-barnacle
+2025-08-14 17:00:32,827 - INFO - Configuration: provider=claude, models=(simple:sonnet, complex:opus, creative:opus), timeouts=(enhance:120s, process:300s), poll=60s, parallel=3
+2025-08-14 17:00:33,321 - INFO - Creating missing label: auto-agent-processing
+2025-08-14 17:00:33,874 - INFO -   ✅ Created label: auto-agent-processing
+2025-08-14 17:00:33,874 - INFO - Creating missing label: auto-agent-failed
+2025-08-14 17:00:34,344 - INFO -   ✅ Created label: auto-agent-failed
+2025-08-14 17:00:34,344 - INFO - Creating missing label: user-created
+2025-08-14 17:00:34,812 - INFO -   ✅ All required labels initialized
+2025-08-14 17:00:34,813 - INFO - Loaded SYSTEM_PROMPT.md
+2025-08-14 17:00:34,813 - INFO - ============================================================
+2025-08-14 17:00:34,814 - INFO - Simple Auto-Agent Starting
+2025-08-14 17:00:34,814 - INFO - Repository: aalexli1/didactic-barnacle
+2025-08-14 17:00:34,814 - INFO - Working directory: /Users/alexli/didactic-barnacle
+2025-08-14 17:00:34,814 - INFO - ============================================================
+2025-08-14 17:00:34,814 - INFO - 🤖 Simple Auto-Agent starting...
+2025-08-14 17:00:34,814 - INFO - 📦 Repository: aalexli1/didactic-barnacle
+2025-08-14 17:00:34,814 - INFO - 📁 Working directory: /Users/alexli/didactic-barnacle
+2025-08-14 17:00:34,814 - INFO - 🔄 Polling for issues with 'auto-agent-ready' label...
+2025-08-14 17:00:34,814 - INFO -    (Skipping issues with 'auto-agent-failed' label)
+2025-08-14 17:00:35,240 - INFO - Found 1 user-created issue(s) to enhance
+2025-08-14 17:00:35,240 - INFO - 🔧 Enhancing user-created issue #32: [EPIC] Build AR Treasure Hunt iOS App
+2025-08-14 17:00:35,241 - INFO - Model selection for issue #32: sonnet | Decision: No matching labels → default model
+2025-08-14 17:00:35,241 - INFO -   Labels present: epic, user-created
+2025-08-14 17:00:35,249 - INFO - Sending issue #32 to ClaudeProvider (model: sonnet) for enhancement...
+2025-08-14 17:02:10,274 - INFO - 👋 Received interrupt signal, shutting down...
+2025-08-14 17:09:24,116 - INFO - Initializing Simple Auto-Agent...
+2025-08-14 17:09:24,125 - INFO - Repository: aalexli1/didactic-barnacle
+2025-08-14 17:09:24,126 - INFO - Working directory: /Users/alexli/didactic-barnacle
+2025-08-14 17:09:24,126 - INFO - Configuration: provider=claude, models=(simple:sonnet, complex:opus, creative:opus), timeouts=(enhance:120s, process:300s), poll=60s, parallel=3
+2025-08-14 17:09:24,610 - INFO - Creating missing label: auto-agent-processing
+2025-08-14 17:09:25,012 - INFO - Creating missing label: auto-agent-failed
+2025-08-14 17:09:25,402 - INFO - Creating missing label: user-created
+2025-08-14 17:09:25,875 - INFO - Loaded SYSTEM_PROMPT.md
+2025-08-14 17:09:25,876 - INFO - ============================================================
+2025-08-14 17:09:25,876 - INFO - Simple Auto-Agent Starting
+2025-08-14 17:09:25,876 - INFO - Repository: aalexli1/didactic-barnacle
+2025-08-14 17:09:25,876 - INFO - Working directory: /Users/alexli/didactic-barnacle
+2025-08-14 17:09:25,876 - INFO - ============================================================
+2025-08-14 17:09:25,876 - INFO - 🤖 Simple Auto-Agent starting...
+2025-08-14 17:09:25,876 - INFO - 📦 Repository: aalexli1/didactic-barnacle
+2025-08-14 17:09:25,876 - INFO - 📁 Working directory: /Users/alexli/didactic-barnacle
+2025-08-14 17:09:25,876 - INFO - 🔄 Polling for issues with 'auto-agent-ready' label...
+2025-08-14 17:09:25,876 - INFO -    (Skipping issues with 'auto-agent-failed' label)
+2025-08-14 17:09:27,195 - INFO - Found 1 ready issue(s) to process
+2025-08-14 17:09:27,195 - INFO - 📋 Processing issue #32: [EPIC] Build AR Treasure Hunt iOS App
+2025-08-14 17:09:27,195 - INFO - Model selection for issue #32: opus | Decision: Label 'creative' → creative model (design/research)
+2025-08-14 17:09:27,195 - INFO -   Labels present: auto-agent-ready, epic, creative, planning, implementation
+2025-08-14 17:09:28,677 - INFO - Sending issue #32 to ClaudeProvider (model: opus) for processing...
+2025-08-14 17:14:28,685 - ERROR - Provider task timed out after 300 seconds
+2025-08-14 17:14:28,705 - ERROR - LLM failed processing for issue #32
+2025-08-14 17:14:28,705 - ERROR -   ❌ LLM processing failed for issue #32
+2025-08-14 17:14:29,663 - INFO - Debug output saved to claude_output_32_20250814_171429.txt
+2025-08-14 17:14:29,664 - INFO - Adding 'auto-agent-failed' label to issue #32
+2025-08-14 17:14:31,051 - INFO - Successfully added auto-agent-failed label to issue #32
+2025-08-14 17:14:33,366 - WARNING - ⚠️ Issue #32 marked as failed for review
+2025-08-14 17:20:39,663 - INFO - Found 1 ready issue(s) to process
+2025-08-14 17:20:39,664 - INFO - 📋 Processing issue #32: [EPIC] Build AR Treasure Hunt iOS App
+2025-08-14 17:20:39,665 - INFO - Model selection for issue #32: opus | Decision: Label 'creative' → creative model (design/research)
+2025-08-14 17:20:39,665 - INFO -   Labels present: auto-agent-ready, epic, creative, planning, implementation
+2025-08-14 17:20:41,297 - INFO - Sending issue #32 to ClaudeProvider (model: opus) for processing...
+2025-08-14 17:24:59,873 - INFO - LLM successfully completed processing for issue #32
+2025-08-14 17:24:59,873 - INFO -   ✅ LLM completed processing issue #32
+2025-08-14 17:25:01,074 - INFO - ✅ Successfully processed issue #32
+2025-08-14 17:29:04,545 - INFO - Found 1 ready issue(s) to process
+2025-08-14 17:29:04,547 - INFO - 📋 Processing issue #33: [SUB-ISSUE] iOS App Foundation & Architecture
+2025-08-14 17:29:04,547 - INFO - Model selection for issue #33: opus | Decision: Task 'implementation' → complex model
+2025-08-14 17:29:04,547 - INFO -   Labels present: auto-agent-ready, implementation
+2025-08-14 17:29:06,066 - INFO - Sending issue #33 to ClaudeProvider (model: opus) for processing...
+2025-08-14 17:34:06,074 - ERROR - Provider task timed out after 300 seconds
+2025-08-14 17:34:06,079 - ERROR - LLM failed processing for issue #33
+2025-08-14 17:34:06,079 - ERROR -   ❌ LLM processing failed for issue #33
+2025-08-14 17:34:07,004 - INFO - Debug output saved to claude_output_33_20250814_173407.txt
+2025-08-14 17:34:07,004 - INFO - Adding 'auto-agent-failed' label to issue #33
+2025-08-14 17:34:08,311 - INFO - Successfully added auto-agent-failed label to issue #33
+2025-08-14 17:34:10,848 - WARNING - ⚠️ Issue #33 marked as failed for review
+2025-08-14 17:34:30,511 - INFO - 👋 Received interrupt signal, shutting down...
+2025-08-14 17:44:37,347 - INFO - Initializing Simple Auto-Agent...
+2025-08-14 17:44:37,357 - INFO - Repository: aalexli1/didactic-barnacle
+2025-08-14 17:44:37,357 - INFO - Working directory: /Users/alexli/didactic-barnacle
+2025-08-14 17:44:37,357 - INFO - Configuration: provider=claude, models=(simple:sonnet, complex:opus, creative:opus), timeouts=(enhance:120s, process:300s), poll=60s, parallel=3
+2025-08-14 17:44:37,793 - INFO - Creating missing label: auto-agent-processing
+2025-08-14 17:44:38,175 - INFO - Creating missing label: auto-agent-failed
+2025-08-14 17:44:38,553 - INFO - Creating missing label: user-created
+2025-08-14 17:44:38,929 - INFO - Loaded SYSTEM_PROMPT.md
+2025-08-14 17:44:38,930 - INFO - ============================================================
+2025-08-14 17:44:38,930 - INFO - Simple Auto-Agent Starting
+2025-08-14 17:44:38,930 - INFO - Repository: aalexli1/didactic-barnacle
+2025-08-14 17:44:38,930 - INFO - Working directory: /Users/alexli/didactic-barnacle
+2025-08-14 17:44:38,930 - INFO - ============================================================
+2025-08-14 17:44:38,930 - INFO - 🤖 Simple Auto-Agent starting...
+2025-08-14 17:44:38,930 - INFO - 📦 Repository: aalexli1/didactic-barnacle
+2025-08-14 17:44:38,930 - INFO - 📁 Working directory: /Users/alexli/didactic-barnacle
+2025-08-14 17:44:38,930 - INFO - 🔄 Polling for issues with 'auto-agent-ready' label...
+2025-08-14 17:44:38,931 - INFO -    (Skipping issues with 'auto-agent-failed' label)
+2025-08-14 17:44:39,782 - INFO - Found 1 ready issue(s) to process
+2025-08-14 17:44:39,782 - INFO - 📋 Processing issue #33: [SUB-ISSUE] iOS App Foundation & Architecture
+2025-08-14 17:44:39,782 - INFO - Model selection for issue #33: opus | Decision: Task 'implementation' → complex model
+2025-08-14 17:44:39,782 - INFO -   Labels present: auto-agent-ready, implementation
+2025-08-14 17:44:41,328 - INFO - Sending issue #33 to ClaudeProvider (model: opus) for processing...
+2025-08-14 17:49:41,332 - ERROR - Provider task timed out after 300 seconds
+2025-08-14 17:49:41,346 - ERROR - LLM failed processing for issue #33
+2025-08-14 17:49:41,346 - ERROR -   ❌ LLM processing failed for issue #33
+2025-08-14 17:49:42,231 - INFO - Debug output saved to claude_output_33_20250814_174942.txt
+2025-08-14 17:49:42,231 - INFO - Adding 'auto-agent-failed' label to issue #33
+2025-08-14 17:49:43,435 - INFO - Successfully added auto-agent-failed label to issue #33
+2025-08-14 17:49:45,966 - WARNING - ⚠️ Issue #33 marked as failed for review
+2025-08-14 17:52:03,934 - INFO - 👋 Received interrupt signal, shutting down...
+2025-08-14 18:30:51,658 - INFO - Initializing Simple Auto-Agent...
+2025-08-14 18:30:51,667 - INFO - Repository: aalexli1/didactic-barnacle
+2025-08-14 18:30:51,667 - INFO - Working directory: /Users/alexli/didactic-barnacle
+2025-08-14 18:30:51,667 - INFO - Configuration: provider=claude, models=(simple:sonnet, complex:opus, creative:opus)
+2025-08-14 18:30:51,667 - INFO - Timeouts: refine=120s, process=300s, maintenance=1800s
+2025-08-14 18:30:51,667 - INFO - Settings: poll=60s, parallel=3, maintenance=enabled (every 12.0h)
+2025-08-14 18:30:51,667 - INFO - Checking repository labels...
+2025-08-14 18:30:52,122 - INFO - Updating label: auto-agent-ready
+2025-08-14 18:30:52,525 - INFO - Creating label: auto-agent-refining-ready
+2025-08-14 18:30:53,003 - INFO -   ✅ Created label: auto-agent-refining-ready
+2025-08-14 18:30:53,004 - INFO - Updating label: simple
+2025-08-14 18:30:53,411 - INFO - Updating label: complex
+2025-08-14 18:30:53,804 - INFO - Updating label: creative
+2025-08-14 18:30:54,191 - INFO - Creating label: bug-fix
+2025-08-14 18:30:54,569 - INFO -   ✅ Created label: bug-fix
+2025-08-14 18:30:54,569 - INFO - Updating label: implementation
+2025-08-14 18:30:54,979 - INFO - Creating label: refactor
+2025-08-14 18:30:55,346 - INFO -   ✅ Created label: refactor
+2025-08-14 18:30:55,346 - INFO - Creating label: research
+2025-08-14 18:30:55,865 - INFO -   ✅ Created label: research
+2025-08-14 18:30:55,866 - INFO - Updating label: planning
+2025-08-14 18:30:56,303 - INFO - Updating label: documentation
+2025-08-14 18:30:56,714 - INFO - Updating label: question
+2025-08-14 18:30:57,113 - INFO - Updating label: epic
+2025-08-14 18:30:57,529 - INFO - Creating label: user-action-required
+2025-08-14 18:30:57,919 - INFO -   ✅ Created label: user-action-required
+2025-08-14 18:30:57,919 - INFO -   ✅ Labels synchronized: 5 created, 9 updated
+2025-08-14 18:30:57,921 - INFO - Loaded SYSTEM_PROMPT.md
+2025-08-14 18:30:57,921 - INFO - ============================================================
+2025-08-14 18:30:57,921 - INFO - Simple Auto-Agent Starting
+2025-08-14 18:30:57,921 - INFO - Repository: aalexli1/didactic-barnacle
+2025-08-14 18:30:57,921 - INFO - Working directory: /Users/alexli/didactic-barnacle
+2025-08-14 18:30:57,921 - INFO - ============================================================
+2025-08-14 18:30:57,921 - INFO - 🤖 Simple Auto-Agent starting...
+2025-08-14 18:30:57,921 - INFO - 📦 Repository: aalexli1/didactic-barnacle
+2025-08-14 18:30:57,921 - INFO - 📁 Working directory: /Users/alexli/didactic-barnacle
+2025-08-14 18:30:57,921 - INFO - 🔄 Polling for issues with 'auto-agent-ready' label...
+2025-08-14 18:30:57,921 - INFO -    (Skipping issues with 'auto-agent-failed' label)
+2025-08-14 18:31:59,683 - INFO - Found 1 ready issue(s) to process
+2025-08-14 18:31:59,684 - INFO - 📋 Processing issue #33: [SUB-ISSUE] iOS App Foundation & Architecture
+2025-08-14 18:31:59,684 - INFO - Model selection for issue #33: opus | Decision: Task 'implementation' → complex model
+2025-08-14 18:31:59,684 - INFO -   Labels present: auto-agent-ready, implementation
+2025-08-14 18:32:00,830 - INFO - Sending issue #33 to ClaudeProvider (model: opus) for processing...
+2025-08-14 18:37:00,896 - ERROR - Provider task timed out after 300 seconds
+2025-08-14 18:37:00,906 - ERROR - LLM failed processing for issue #33
+2025-08-14 18:37:00,906 - ERROR -   ❌ LLM processing failed for issue #33
+2025-08-14 18:37:02,824 - INFO - Debug output saved to claude_output_33_20250814_183702.txt
+2025-08-14 18:37:02,824 - INFO - Adding 'auto-agent-failed' label to issue #33
+2025-08-14 18:37:05,372 - INFO - Successfully added auto-agent-failed label to issue #33
+2025-08-14 18:37:07,455 - WARNING - ⚠️ Issue #33 marked as failed for review
+2025-08-14 20:25:42,014 - INFO - Initializing Simple Auto-Agent...
+2025-08-14 20:25:42,025 - INFO - Repository: aalexli1/didactic-barnacle
+2025-08-14 20:25:42,025 - INFO - Working directory: /Users/alexli/didactic-barnacle
+2025-08-14 20:25:42,025 - INFO - Configuration: provider=claude, models=(simple:sonnet, complex:opus, creative:opus)
+2025-08-14 20:25:42,025 - INFO - Timeouts: refine=120s, process=1800s, maintenance=1800s
+2025-08-14 20:25:42,025 - INFO - Settings: poll=60s, parallel=3, maintenance=enabled (every 12.0h)
+2025-08-14 20:25:42,025 - INFO - Checking repository labels...
+2025-08-14 20:25:42,559 - INFO -   ✅ All labels up to date
+2025-08-14 20:25:42,560 - INFO - Loaded SYSTEM_PROMPT.md
+2025-08-14 20:25:42,561 - INFO - ============================================================
+2025-08-14 20:25:42,561 - INFO - Simple Auto-Agent Starting
+2025-08-14 20:25:42,561 - INFO - Repository: aalexli1/didactic-barnacle
+2025-08-14 20:25:42,561 - INFO - Working directory: /Users/alexli/didactic-barnacle
+2025-08-14 20:25:42,561 - INFO - ============================================================
+2025-08-14 20:25:42,561 - INFO - 🤖 Simple Auto-Agent starting...
+2025-08-14 20:25:42,561 - INFO - 📦 Repository: aalexli1/didactic-barnacle
+2025-08-14 20:25:42,561 - INFO - 📁 Working directory: /Users/alexli/didactic-barnacle
+2025-08-14 20:25:42,561 - INFO - 🔄 Polling for issues with 'auto-agent-ready' label...
+2025-08-14 20:25:42,561 - INFO -    (Skipping issues with 'auto-agent-failed' label)
+2025-08-14 20:25:43,614 - INFO - Found 2 ready issue(s) to process
+2025-08-14 20:25:43,614 - INFO - 📋 Processing issue #34: [SUB-ISSUE] Backend API & Database Setup
+2025-08-14 20:25:43,614 - INFO - Model selection for issue #34: opus | Decision: Task 'implementation' → complex model
+2025-08-14 20:25:43,614 - INFO -   Labels present: auto-agent-ready, implementation
+2025-08-14 20:25:44,841 - INFO - Sending issue #34 to ClaudeProvider (model: opus) for processing...
+2025-08-14 20:37:40,765 - INFO - LLM successfully completed processing for issue #34
+2025-08-14 20:37:40,766 - INFO -   ✅ LLM completed processing issue #34
+2025-08-14 20:37:42,469 - INFO - ✅ Successfully processed issue #34
+2025-08-14 20:38:43,913 - INFO - Found 1 ready issue(s) to process
+2025-08-14 20:38:43,913 - INFO - 📋 Processing issue #33: [SUB-ISSUE] iOS App Foundation & Architecture
+2025-08-14 20:38:43,913 - INFO - Model selection for issue #33: opus | Decision: Task 'implementation' → complex model
+2025-08-14 20:38:43,914 - INFO -   Labels present: auto-agent-ready, implementation
+2025-08-14 20:38:45,382 - INFO - Sending issue #33 to ClaudeProvider (model: opus) for processing...
+2025-08-14 20:44:28,383 - INFO - LLM successfully completed processing for issue #33
+2025-08-14 20:44:28,384 - INFO -   ✅ LLM completed processing issue #33
+2025-08-14 20:44:29,503 - INFO - ✅ Successfully processed issue #33
+2025-08-15 03:11:28,791 - ERROR - Failed to get issues: Post "https://api.github.com/graphql": read tcp 10.0.0.196:58984->140.82.116.6:443: read: connection reset by peer
+
+2025-08-15 07:22:49,740 - ERROR - Failed to get issues: Post "https://api.github.com/graphql": read tcp 10.0.0.196:59127->140.82.116.5:443: read: connection reset by peer
+
+2025-08-15 08:44:08,936 - INFO - ⏰ Maintenance interval reached (12.3 hours)
+2025-08-15 08:44:08,936 - INFO - 🔧 Starting periodic maintenance...
+2025-08-15 08:44:11,620 - INFO - Sending issue #51 to ClaudeProvider (model: opus) for maintenance...
+2025-08-15 10:04:48,326 - INFO - LLM successfully completed maintenance for issue #51
+2025-08-15 10:04:48,326 - INFO - ✅ Maintenance completed successfully
+2025-08-15 16:42:17,215 - INFO - Found 2 ready issue(s) to process
+2025-08-15 16:42:17,215 - INFO - 📋 Processing issue #36: [SUB-ISSUE] User Authentication & Profile Management
+2025-08-15 16:42:17,215 - INFO - Model selection for issue #36: opus | Decision: Task 'implementation' → complex model
+2025-08-15 16:42:17,215 - INFO -   Labels present: auto-agent-ready, implementation
+2025-08-15 16:42:18,562 - INFO - Sending issue #36 to ClaudeProvider (model: opus) for processing...
