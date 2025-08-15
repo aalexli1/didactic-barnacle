@@ -8,17 +8,21 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var appCoordinator: AppCoordinator
+    @EnvironmentObject var locationManager: LocationManager
+    @EnvironmentObject var arSessionManager: ARSessionManager
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
+        MainTabView()
+            .environmentObject(appCoordinator)
+            .environmentObject(locationManager)
+            .environmentObject(arSessionManager)
     }
 }
 
 #Preview {
     ContentView()
+        .environmentObject(AppCoordinator())
+        .environmentObject(LocationManager())
+        .environmentObject(ARSessionManager())
 }
