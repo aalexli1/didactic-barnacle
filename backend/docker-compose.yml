@@ -1,0 +1,58 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgis/postgis:15-3.3
+    container_name: ar_treasure_postgres
+    environment:
+      POSTGRES_DB: ar_treasure_hunt
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - ar_treasure_network
+
+  redis:
+    image: redis:7-alpine
+    container_name: ar_treasure_redis
+    ports:
+      - "6379:6379"
+    networks:
+      - ar_treasure_network
+
+  backend:
+    build: .
+    container_name: ar_treasure_backend
+    environment:
+      NODE_ENV: development
+      PORT: 3000
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: ar_treasure_hunt
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      JWT_SECRET: your_jwt_secret_here
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+      - redis
+    volumes:
+      - ./src:/app/src
+      - ./package.json:/app/package.json
+    networks:
+      - ar_treasure_network
+    command: npm run dev
+
+volumes:
+  postgres_data:
+
+networks:
+  ar_treasure_network:
+    driver: bridge
