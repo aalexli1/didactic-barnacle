@@ -3,6 +3,7 @@ const { body, param, validationResult } = require('express-validator');
 const { Op } = require('sequelize');
 const { User, Friend, Notification } = require('../models');
 const auth = require('../middleware/auth');
+const QRCode = require('qrcode');
 
 const handleValidationErrors = (req, res, next) => {
   const errors = validationResult(req);
@@ -265,6 +266,133 @@ router.delete('/remove/:friendId',
     } catch (error) {
       console.error('Error removing friend:', error);
       res.status(500).json({ error: 'Failed to remove friend' });
+    }
+  }
+);
+
+/**
+ * @swagger
+ * /api/friends/qrcode:
+ *   get:
+ *     summary: Generate QR code for friend request
+ *     tags: [Friends]
+ *     security:
+ *       - bearerAuth: []
+ */
+router.get('/qrcode', auth, async (req, res) => {
+  try {
+    const user = await User.findByPk(req.user.id, {
+      attributes: ['id', 'username']
+    });
+
+    const friendData = {
+      type: 'friend_request',
+      user_id: user.id,
+      username: user.username,
+      timestamp: Date.now()
+    };
+
+    const qrDataString = JSON.stringify(friendData);
+    const qrCodeDataUrl = await QRCode.toDataURL(qrDataString, {
+      width: 300,
+      margin: 2,
+      color: {
+        dark: '#000000',
+        light: '#FFFFFF'
+      }
+    });
+
+    res.json({
+      qrCode: qrCodeDataUrl,
+      data: friendData
+    });
+  } catch (error) {
+    console.error('Error generating QR code:', error);
+    res.status(500).json({ error: 'Failed to generate QR code' });
+  }
+});
+
+/**
+ * @swagger
+ * /api/friends/scan:
+ *   post:
+ *     summary: Process scanned QR code for friend request
+ *     tags: [Friends]
+ *     security:
+ *       - bearerAuth: []
+ */
+router.post('/scan',
+  auth,
+  [body('qrData').isString()],
+  handleValidationErrors,
+  async (req, res) => {
+    try {
+      const { qrData } = req.body;
+      
+      let friendData;
+      try {
+        friendData = JSON.parse(qrData);
+      } catch (e) {
+        return res.status(400).json({ error: 'Invalid QR code data' });
+      }
+
+      if (friendData.type !== 'friend_request') {
+        return res.status(400).json({ error: 'Invalid QR code type' });
+      }
+
+      if (friendData.user_id === req.user.id) {
+        return res.status(400).json({ error: 'Cannot add yourself as a friend' });
+      }
+
+      const existingFriendship = await Friend.findOne({
+        where: {
+          [Op.or]: [
+            { user_id: req.user.id, friend_id: friendData.user_id },
+            { user_id: friendData.user_id, friend_id: req.user.id }
+          ]
+        }
+      });
+
+      if (existingFriendship) {
+        return res.status(400).json({ 
+          error: 'Friend request already exists',
+          status: existingFriendship.status 
+        });
+      }
+
+      const friendRequest = await Friend.create({
+        user_id: req.user.id,
+        friend_id: friendData.user_id,
+        status: 'pending'
+      });
+
+      const requester = await User.findByPk(req.user.id, {
+        attributes: ['username']
+      });
+
+      await Notification.create({
+        user_id: friendData.user_id,
+        type: 'friend_request',
+        title: 'New Friend Request',
+        message: `${requester.username} wants to be your friend!`,
+        data: {
+          request_id: friendRequest.id,
+          user_id: req.user.id,
+          username: requester.username
+        }
+      });
+
+      const GamificationService = require('../services/gamificationService');
+      await GamificationService.addExperience(req.user.id, GamificationService.POINTS_CONFIG.FRIEND_ADDED, 'friend_added');
+
+      res.status(201).json({
+        success: true,
+        message: 'Friend request sent via QR code',
+        request: friendRequest
+      });
+    } catch (error) {
+      console.error('Error processing QR code:', error);
+      res.status(500).json({ error: 'Failed to process QR code' });
     }
   }
 );
