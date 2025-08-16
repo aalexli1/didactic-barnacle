@@ -38,6 +38,18 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.FLOAT,
       allowNull: true,
       comment: 'Distance in meters when discovered'
+    },
+    photo_url: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    comment: {
+      type: DataTypes.TEXT,
+      allowNull: true
+    },
+    reaction_type: {
+      type: DataTypes.ENUM('like', 'love', 'wow', 'funny', 'cool'),
+      allowNull: true
     }
   }, {
     tableName: 'discoveries',

@@ -18,6 +18,7 @@ models.Treasure = require('./Treasure')(sequelize, DataTypes);
 models.Discovery = require('./Discovery')(sequelize, DataTypes);
 models.Friend = require('./Friend')(sequelize, DataTypes);
 models.Notification = require('./Notification')(sequelize, DataTypes);
+models.SyncMetadata = require('./SyncMetadata')(sequelize, DataTypes);
 
 models.User.hasMany(models.Treasure, { as: 'createdTreasures', foreignKey: 'creator_id' });
 models.Treasure.belongsTo(models.User, { as: 'creator', foreignKey: 'creator_id' });
