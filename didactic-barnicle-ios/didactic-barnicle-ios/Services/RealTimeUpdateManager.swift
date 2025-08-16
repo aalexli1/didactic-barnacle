@@ -1,6 +1,7 @@
 import Foundation
 import Combine
 import UserNotifications
+import MapKit
 
 class RealTimeUpdateManager: ObservableObject {
     static let shared = RealTimeUpdateManager()

@@ -75,13 +75,13 @@ struct HapticFeedback {
 }
 
 struct AccessibilityAnnouncement {
-    static func announce(_ message: String, priority: UIAccessibility.NotificationPriority = .high) {
+    static func announce(_ message: String, priority: Bool = true) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             UIAccessibility.post(
                 notification: .announcement,
                 argument: NSAttributedString(
                     string: message,
-                    attributes: [.accessibilitySpeechQueueAnnouncement: priority == .high]
+                    attributes: [.accessibilitySpeechQueueAnnouncement: priority]
                 )
             )
         }

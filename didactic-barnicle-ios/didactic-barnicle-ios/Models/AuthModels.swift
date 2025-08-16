@@ -27,11 +27,11 @@ struct SignInRequest: Codable {
 }
 
 struct AuthResponse: Codable {
-    let user: User
+    let user: AuthUser
     let token: AuthToken
 }
 
-struct User: Codable {
+struct AuthUser: Codable {
     let id: String
     let email: String
     let username: String

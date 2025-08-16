@@ -10,7 +10,7 @@ import SwiftUI
 struct CreateTreasureView: View {
     @Binding var isPresented: Bool
     @State private var currentStep = 0
-    @State private var selectedTreasure = TreasureType.chest
+    @State private var selectedTreasure = TreasureAppearance.chest
     @State private var message = ""
     @State private var visibility = TreasureVisibility.everyone
     @State private var expiresIn = TreasureExpiration.never
@@ -139,7 +139,7 @@ struct ProgressBar: View {
     }
 }
 
-enum TreasureType: String, CaseIterable {
+enum TreasureAppearance: String, CaseIterable {
     case chest = "Treasure Chest"
     case gem = "Crystal Gem"
     case scroll = "Ancient Scroll"
@@ -171,7 +171,7 @@ enum TreasureType: String, CaseIterable {
 }
 
 struct TreasureSelectionStep: View {
-    @Binding var selectedTreasure: TreasureType
+    @Binding var selectedTreasure: TreasureAppearance
     
     var body: some View {
         VStack(spacing: Theme.Spacing.large) {
@@ -181,7 +181,7 @@ struct TreasureSelectionStep: View {
                 .padding(.top, Theme.Spacing.xLarge)
             
             LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: Theme.Spacing.medium) {
-                ForEach(TreasureType.allCases, id: \.self) { treasure in
+                ForEach(TreasureAppearance.allCases, id: \.self) { treasure in
                     TreasureOption(
                         treasure: treasure,
                         isSelected: selectedTreasure == treasure,
@@ -202,7 +202,7 @@ struct TreasureSelectionStep: View {
 }
 
 struct TreasureOption: View {
-    let treasure: TreasureType
+    let treasure: TreasureAppearance
     let isSelected: Bool
     let action: () -> Void
     
@@ -286,16 +286,22 @@ struct MessageComposerStep: View {
     }
 }
 
-enum TreasureVisibility: String, CaseIterable {
-    case everyone = "Everyone"
-    case friends = "Friends Only"
-    case specific = "Specific People"
+// TreasureVisibility enum moved to AuthModels.swift to avoid duplication
+
+extension TreasureVisibility {
+    var displayName: String {
+        switch self {
+        case .everyone: return "Everyone"
+        case .friends: return "Friends Only"
+        case .onlyMe: return "Only Me"
+        }
+    }
     
     var icon: String {
         switch self {
         case .everyone: return "globe"
         case .friends: return "person.2.fill"
-        case .specific: return "person.fill"
+        case .onlyMe: return "person.fill"
         }
     }
 }
@@ -385,7 +391,7 @@ struct VisibilityOption: View {
 }
 
 struct PreviewStep: View {
-    let treasure: TreasureType
+    let treasure: TreasureAppearance
     let message: String
     let visibility: TreasureVisibility
     let expiresIn: TreasureExpiration
