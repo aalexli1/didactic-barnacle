@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var appCoordinator: AppCoordinator
+    @EnvironmentObject var locationManager: LocationManager
+    @EnvironmentObject var arSessionManager: ARSessionManager
+    
     @State private var showLaunchScreen = true
     @State private var isOnboardingComplete = UserDefaults.standard.bool(forKey: "OnboardingComplete")
     @State private var permissionsGranted = UserDefaults.standard.bool(forKey: "PermissionsGranted")
@@ -35,6 +39,9 @@ struct ContentView: View {
                     }
             } else {
                 MainTabView()
+                    .environmentObject(appCoordinator)
+                    .environmentObject(locationManager)
+                    .environmentObject(arSessionManager)
                     .transition(.opacity)
             }
         }
@@ -50,4 +57,7 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+        .environmentObject(AppCoordinator())
+        .environmentObject(LocationManager())
+        .environmentObject(ARSessionManager())
 }
