@@ -43,6 +43,7 @@ enum Difficulty: String, Codable, CaseIterable {
 struct Treasure: Codable, Identifiable {
     let id: UUID
     let creatorId: UUID
+    var name: String
     var title: String
     var description: String?
     var message: String?
@@ -60,12 +61,14 @@ struct Treasure: Codable, Identifiable {
     let createdAt: Date
     let expiresAt: Date?
     var discoveries: [Discovery]
+    var distanceFromUser: Double?
     
     var arObject: ARObjectConfig
     
     init(
         id: UUID = UUID(),
         creatorId: UUID,
+        name: String? = nil,
         title: String,
         description: String? = nil,
         message: String? = nil,
@@ -83,10 +86,12 @@ struct Treasure: Codable, Identifiable {
         createdAt: Date = Date(),
         expiresAt: Date? = nil,
         discoveries: [Discovery] = [],
+        distanceFromUser: Double? = nil,
         arObject: ARObjectConfig = ARObjectConfig()
     ) {
         self.id = id
         self.creatorId = creatorId
+        self.name = name ?? title
         self.title = title
         self.description = description
         self.message = message
@@ -104,6 +109,7 @@ struct Treasure: Codable, Identifiable {
         self.createdAt = createdAt
         self.expiresAt = expiresAt
         self.discoveries = discoveries
+        self.distanceFromUser = distanceFromUser
         self.arObject = arObject
     }
     
@@ -121,6 +127,7 @@ struct Treasure: Codable, Identifiable {
             Treasure(
                 id: UUID(),
                 creatorId: mockUserId,
+                name: "Golden Chest",
                 title: "Golden Chest",
                 description: "A mysterious golden chest hidden in the park",
                 message: "Congratulations! You've found the golden chest!",
@@ -135,6 +142,7 @@ struct Treasure: Codable, Identifiable {
             Treasure(
                 id: UUID(),
                 creatorId: mockUserId,
+                name: "Ancient Artifact",
                 title: "Ancient Artifact",
                 description: "An ancient artifact from a lost civilization",
                 message: "Amazing! You've discovered an ancient artifact!",
@@ -149,6 +157,7 @@ struct Treasure: Codable, Identifiable {
             Treasure(
                 id: UUID(),
                 creatorId: mockUserId,
+                name: "Crystal Gem",
                 title: "Crystal Gem",
                 description: "A sparkling crystal gem with magical properties",
                 message: "Wonderful! You've found the crystal gem!",
@@ -163,6 +172,7 @@ struct Treasure: Codable, Identifiable {
             Treasure(
                 id: UUID(),
                 creatorId: mockUserId,
+                name: "Pirate's Bounty",
                 title: "Pirate's Bounty",
                 description: "Lost treasure from a pirate ship",
                 message: "Ahoy! You've found the pirate's bounty!",
@@ -177,6 +187,7 @@ struct Treasure: Codable, Identifiable {
             Treasure(
                 id: UUID(),
                 creatorId: mockUserId,
+                name: "Dragon's Egg",
                 title: "Dragon's Egg",
                 description: "A legendary dragon egg of immense power",
                 message: "Incredible! You've discovered the legendary dragon egg!",

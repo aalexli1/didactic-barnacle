@@ -1,6 +1,7 @@
 import SwiftUI
 import ARKit
 import RealityKit
+import AVFoundation
 
 struct ARCameraView: View {
     @EnvironmentObject var arSessionManager: ARSessionManager
