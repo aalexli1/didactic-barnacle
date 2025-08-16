@@ -38,7 +38,9 @@ enum APIError: LocalizedError {
 class APIClient {
     static let shared = APIClient()
     
-    private let baseURL = "https://api.artreasurehunt.com/v1"
+    // For local development testing
+    private let baseURL = "http://localhost:3000/api"
+    // Production URL: "https://api.artreasurehunt.com/v1"
     private let session: URLSession
     
     private init() {
