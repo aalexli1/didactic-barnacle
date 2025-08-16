@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ARCameraView: View {
     @Binding var isPresented: Bool
+    var targetTreasure: Treasure? = nil
     @State private var detectedTreasures: [DetectedTreasure] = []
     @State private var selectedTreasure: DetectedTreasure? = nil
     @State private var showDiscoveryAnimation = false
