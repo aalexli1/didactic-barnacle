@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DiscoveryFeedView: View {
-    @State private var discoveries: [Discovery] = Discovery.sampleData
+    @State private var discoveries: [DiscoveryFeedItem] = DiscoveryFeedItem.sampleData
     @State private var selectedFilter: DiscoveryFilter = .all
     
     var body: some View {
@@ -42,7 +42,7 @@ struct DiscoveryFeedView: View {
     }
 }
 
-struct Discovery: Identifiable {
+struct DiscoveryFeedItem: Identifiable {
     let id = UUID()
     let username: String
     let userAvatar: String
@@ -54,8 +54,8 @@ struct Discovery: Identifiable {
     let comments: Int
     var isLiked: Bool = false
     
-    static let sampleData: [Discovery] = [
-        Discovery(
+    static let sampleData: [DiscoveryFeedItem] = [
+        DiscoveryFeedItem(
             username: "AdventureSeeker",
             userAvatar: "person.circle.fill",
             treasureType: "Golden Chest",
@@ -65,7 +65,7 @@ struct Discovery: Identifiable {
             likes: 42,
             comments: 8
         ),
-        Discovery(
+        DiscoveryFeedItem(
             username: "TreasureHunter42",
             userAvatar: "person.circle.fill",
             treasureType: "Crystal Gem",
@@ -75,7 +75,7 @@ struct Discovery: Identifiable {
             likes: 128,
             comments: 23
         ),
-        Discovery(
+        DiscoveryFeedItem(
             username: "MagicExplorer",
             userAvatar: "person.circle.fill",
             treasureType: "Ancient Scroll",
@@ -139,7 +139,7 @@ struct FilterChip: View {
 }
 
 struct DiscoveryCard: View {
-    let discovery: Discovery
+    let discovery: DiscoveryFeedItem
     @State private var isLiked: Bool = false
     @State private var likeScale: CGFloat = 1.0
     

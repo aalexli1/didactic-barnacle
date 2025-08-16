@@ -103,7 +103,7 @@ struct ARDiscoveryView: View {
                 
                 // Distance Indicator
                 if let nearestTreasure = viewModel.nearestTreasure {
-                    ProximityIndicator(
+                    ARProximityIndicator(
                         treasure: nearestTreasure,
                         distance: viewModel.distanceToNearest,
                         proximityLevel: proximityLevel
@@ -454,7 +454,7 @@ struct ScannerCorner: View {
 }
 
 // MARK: - Proximity Indicator
-struct ProximityIndicator: View {
+struct ARProximityIndicator: View {
     let treasure: Treasure
     let distance: Double
     let proximityLevel: ARDiscoveryView.ProximityLevel

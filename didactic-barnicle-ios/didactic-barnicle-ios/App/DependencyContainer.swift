@@ -30,15 +30,17 @@ class DependencyContainer {
         )
     }
     
-    func makeARCameraViewModel() -> ARCameraViewModel {
-        return ARCameraViewModel(
-            arSessionManager: arSessionService,
-            locationManager: locationService,
-            treasureService: treasureService
-        )
-    }
+    // TODO: Implement ARCameraViewModel
+    // func makeARCameraViewModel() -> ARCameraViewModel {
+    //     return ARCameraViewModel(
+    //         arSessionManager: arSessionService,
+    //         locationManager: locationService,
+    //         treasureService: treasureService
+    //     )
+    // }
     
-    func makeProfileViewModel() -> ProfileViewModel {
-        return ProfileViewModel(userService: userService)
-    }
+    // TODO: Implement ProfileViewModel
+    // func makeProfileViewModel() -> ProfileViewModel {
+    //     return ProfileViewModel(userService: userService)
+    // }
 }

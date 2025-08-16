@@ -13,7 +13,7 @@ struct Typography {
         case title1 = 28
         case title2 = 22
         case title3 = 20
-        case headline = 17
+        case headline = 18
         case body = 17
         case callout = 16
         case subheadline = 15

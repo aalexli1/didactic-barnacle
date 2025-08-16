@@ -157,7 +157,7 @@ struct ARRadar: View {
                 TreasureRadarDot(treasure: treasure)
             }
             
-            RadarSweep(rotation: rotation)
+            CameraRadarSweep(rotation: rotation)
         }
         .onAppear {
             withAnimation(
@@ -199,7 +199,7 @@ struct TreasureRadarDot: View {
     }
 }
 
-struct RadarSweep: View {
+struct CameraRadarSweep: View {
     let rotation: Double
     
     var body: some View {
