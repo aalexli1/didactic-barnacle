@@ -33,6 +33,16 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.TEXT,
       allowNull: true
     },
+    level: {
+      type: DataTypes.INTEGER,
+      defaultValue: 1,
+      allowNull: false
+    },
+    experience: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
+      allowNull: false
+    },
     treasures_created: {
       type: DataTypes.INTEGER,
       defaultValue: 0
@@ -44,6 +54,16 @@ module.exports = (sequelize, DataTypes) => {
     points: {
       type: DataTypes.INTEGER,
       defaultValue: 0
+    },
+    settings: {
+      type: DataTypes.JSONB,
+      defaultValue: {
+        notificationsEnabled: true,
+        locationSharingEnabled: true,
+        privateProfile: false,
+        discoveryRadius: 1000
+      },
+      allowNull: false
     },
     is_active: {
       type: DataTypes.BOOLEAN,

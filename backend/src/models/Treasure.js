@@ -45,6 +45,20 @@ module.exports = (sequelize, DataTypes) => {
         max: 180
       }
     },
+    altitude: {
+      type: DataTypes.FLOAT,
+      defaultValue: 0,
+      allowNull: false
+    },
+    type: {
+      type: DataTypes.ENUM('standard', 'premium', 'special', 'event'),
+      defaultValue: 'standard',
+      allowNull: false
+    },
+    media_url: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
     ar_object: {
       type: DataTypes.JSONB,
       allowNull: true,
